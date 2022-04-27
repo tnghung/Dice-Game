@@ -6,6 +6,10 @@ var btnHold = document.querySelector('.btn--hold');
 var btnRoll = document.querySelector('.btn--roll');
 var diceDOM = document.querySelector('.dice');
 
+var popUpDOM = document.querySelector('.overlay');
+var popUpBtn = document.querySelector('.popup__btn');
+var popUpDesc = document.querySelector('.popup__desc');
+
 init();
 
 // Click on Button Roll
@@ -25,13 +29,15 @@ document.querySelector('.btn--roll').addEventListener('click', function () {
 
   // 4. Keep the score and change the player
   if (dice === 1) {
-    alert(`Player ${activePlayer + 1} rolls the number 1!`);
+    popUpDOM.style.display = 'block';
+    popUpDesc.textContent = `Player ${activePlayer + 1} gets the dice 1!`;
     diceDOM.style.display = 'none';
     document.querySelector('#current--' + activePlayer).textContent =
       scores[activePlayer];
     document.querySelector('#score--' + activePlayer).textContent =
       scores[activePlayer];
     nextPlayer();
+    popUpBtn.textContent = `TIME FOR PLAYER ${activePlayer + 1}`;
     return;
   }
 
@@ -89,3 +95,8 @@ function nextPlayer() {
   document.querySelector('.player--1').classList.toggle('player--active');
   btnHold.style.display = 'none';
 }
+
+// Click to exit the popup
+popUpBtn.addEventListener('click', function () {
+  popUpDOM.style.display = 'none';
+});

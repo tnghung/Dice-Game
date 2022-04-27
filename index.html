@@ -12,6 +12,31 @@
     <title>Dice Game</title>
   </head>
   <body>
+    <div class="menu" style="display: none">
+      <div class="menu__background">
+        <h1 class="menu__title">Dice game</h1>
+      </div>
+      <ul class="menu__list">
+        <li class="menu__item"><a href="#" class="menu__link">Start</a></li>
+        <li class="menu__item">
+          <a href="#" class="menu__link">How to play</a>
+        </li>
+        <li class="menu__item"><a href="#" class="menu__link">About me</a></li>
+      </ul>
+    </div>
+    <div class="overlay">
+      <div class="popup">
+        <div class="popup__img">
+          <img src="imgs/dialog.png" alt="Anya Scare" />
+        </div>
+        <div class="popup__content">
+          <h3 class="popup__title">Oh no!</h3>
+          <p class="popup__desc">Player 1 gets the dice 1!</p>
+        </div>
+        <button class="popup__btn">Time for player 2</button>
+      </div>
+    </div>
+
     <main>
       <section class="player player--0 player--active">
         <h2 class="name" id="name--0">Player 1</h2>
