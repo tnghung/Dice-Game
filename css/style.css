@@ -90,7 +90,7 @@ main {
   background-repeat: no-repeat;
   background-size: inherit;
   background-position: center;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 .player--1 {
@@ -104,22 +104,22 @@ main {
   background-repeat: no-repeat;
   background-size: inherit;
   background-position: bottom;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 /* Active status */
 .player--1.player--active {
   background-image: linear-gradient(
       to right bottom,
-      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.4) 0%,
       rgba(0, 0, 0, 0.1) 20%,
-      rgba(255, 255, 255, 0.8) 30%,
+      rgba(255, 255, 255, 0.4) 30%,
       rgba(0, 0, 0, 0.2) 80%,
-      rgba(255, 255, 255, 0.7) 100%
+      rgba(255, 255, 255, 0.5) 100%
     ),
     url('../imgs/player_2-r.png');
   background-repeat: no-repeat;
-  background-blend-mode: multiply;
+  background-blend-mode: revert;
   background-position: bottom;
   opacity: 0.8;
 }
@@ -127,15 +127,15 @@ main {
 .player--0.player--active {
   background-image: linear-gradient(
       to right bottom,
-      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.4) 0%,
       rgba(0, 0, 0, 0.1) 20%,
-      rgba(255, 255, 255, 0.8) 30%,
+      rgba(255, 255, 255, 0.4) 30%,
       rgba(0, 0, 0, 0.2) 80%,
-      rgba(255, 255, 255, 0.7) 100%
+      rgba(255, 255, 255, 0.5) 100%
     ),
     url('../imgs/player_1-r.png');
   background-repeat: no-repeat;
-  background-blend-mode: multiply;
+  background-blend-mode: revert;
   background-position: center;
   opacity: 0.8;
 }
