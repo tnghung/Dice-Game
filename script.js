@@ -63,7 +63,7 @@ document.querySelector('.btn--hold').addEventListener('click', function () {
   document.querySelector('#current--' + activePlayer).textContent =
     scores[activePlayer];
   nextPlayer();
-  bgImage.style.backgroundImage = `url(/imgs/bg_${activePlayer}.jpg)`;
+  bgImage.style.backgroundImage = `url(../imgs/bg_${activePlayer}.jpg)`;
 });
 
 // Restart a new game
