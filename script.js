@@ -7,8 +7,10 @@ var btnRoll = document.querySelector('.btn--roll');
 var diceDOM = document.querySelector('.dice');
 
 var popUpDOM = document.querySelector('.overlay');
+var popup = document.querySelector('.popup');
 var popUpBtn = document.querySelector('.popup__btn');
 var popUpDesc = document.querySelector('.popup__desc');
+var bgImage = document.querySelector('.bg-image');
 
 init();
 
@@ -30,6 +32,8 @@ document.querySelector('.btn--roll').addEventListener('click', function () {
   // 4. Keep the score and change the player
   if (dice === 1) {
     popUpDOM.style.display = 'block';
+    popup.classList.remove('hide');
+    popup.classList.add('show');
     popUpDesc.textContent = `Player ${activePlayer + 1} gets the dice 1!`;
     diceDOM.style.display = 'none';
     document.querySelector('#current--' + activePlayer).textContent =
@@ -38,6 +42,7 @@ document.querySelector('.btn--roll').addEventListener('click', function () {
       scores[activePlayer];
     nextPlayer();
     popUpBtn.textContent = `TIME FOR PLAYER ${activePlayer + 1}`;
+    bgImage.style.backgroundImage = `url(/imgs/bg_${activePlayer}.jpg)`;
     return;
   }
 
@@ -59,6 +64,7 @@ document.querySelector('.btn--hold').addEventListener('click', function () {
   document.querySelector('#current--' + activePlayer).textContent =
     scores[activePlayer];
   nextPlayer();
+  bgImage.style.backgroundImage = `url(/imgs/bg_${activePlayer}.jpg)`;
 });
 
 // Restart a new game
@@ -73,6 +79,8 @@ function init() {
   btnHold.style.display = 'none';
   diceDOM.style.display = 'none';
   btnRoll.style.display = 'block';
+
+  popup.classList.add('hide');
 
   document.getElementById('name--0').textContent = `Player 1`;
   document.getElementById('name--1').textContent = `Player 2`;
@@ -98,5 +106,7 @@ function nextPlayer() {
 
 // Click to exit the popup
 popUpBtn.addEventListener('click', function () {
+  popup.classList.remove('show');
+  popup.classList.add('hide');
   popUpDOM.style.display = 'none';
 });
