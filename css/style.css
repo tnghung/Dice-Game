@@ -259,11 +259,10 @@ main {
 
 .player--winner .name {
   font-weight: 700;
-  color: #c7365f;
+  color: #860101;
 }
 
 .overlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -283,8 +282,8 @@ main {
   padding: 1.8rem 1.5rem;
   top: 50%;
   left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
   background-color: rgba(244, 50, 112, 0.8);
   border-radius: 1rem;
   box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.2);
@@ -335,19 +334,6 @@ main {
   text-transform: uppercase;
   border-radius: 10px;
   cursor: pointer;
-}
-
-.popup.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  transition-delay: 0.2s;
-  transition: all 0.4s;
-}
-
-.popup.hide {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.8);
-  transition: all 0.4s;
 }
 
 .menu {

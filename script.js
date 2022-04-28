@@ -32,8 +32,7 @@ document.querySelector('.btn--roll').addEventListener('click', function () {
   // 4. Keep the score and change the player
   if (dice === 1) {
     popUpDOM.style.display = 'block';
-    popup.classList.remove('hide');
-    popup.classList.add('show');
+
     popUpDesc.textContent = `Player ${activePlayer + 1} gets the dice 1!`;
     diceDOM.style.display = 'none';
     document.querySelector('#current--' + activePlayer).textContent =
@@ -79,8 +78,7 @@ function init() {
   btnHold.style.display = 'none';
   diceDOM.style.display = 'none';
   btnRoll.style.display = 'block';
-
-  popup.classList.add('hide');
+  popUpDOM.style.display = 'none';
 
   document.getElementById('name--0').textContent = `Player 1`;
   document.getElementById('name--1').textContent = `Player 2`;
