@@ -24,7 +24,7 @@ body {
 }
 
 .bg-image {
-  background-image: url('/imgs/bg_0.jpg');
+  background-image: url('../imgs/bg_0.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -85,7 +85,7 @@ main {
       rgba(183, 1, 1, 0.9) 0%,
       #bf2e34 100%
     ),
-    url(/imgs/player_1-r.png);
+    url('../imgs/player_1-r.png');
   background-blend-mode: darken;
   background-repeat: no-repeat;
   background-size: inherit;
@@ -99,7 +99,7 @@ main {
       rgba(183, 1, 1, 0.9) 0%,
       #bf2e34 100%
     ),
-    url(/imgs/player_2-r.png);
+    url('../imgs/player_2-r.png');
   background-blend-mode: darken;
   background-repeat: no-repeat;
   background-size: inherit;
@@ -117,7 +117,7 @@ main {
       rgba(0, 0, 0, 0.2) 80%,
       rgba(255, 255, 255, 0.7) 100%
     ),
-    url(/imgs/player_2-r.png);
+    url('../imgs/player_2-r.png');
   background-repeat: no-repeat;
   background-blend-mode: multiply;
   background-position: bottom;
@@ -133,7 +133,7 @@ main {
       rgba(0, 0, 0, 0.2) 80%,
       rgba(255, 255, 255, 0.7) 100%
     ),
-    url(/imgs/player_1-r.png);
+    url('../imgs/player_1-r.png');
   background-repeat: no-repeat;
   background-blend-mode: multiply;
   background-position: center;
@@ -351,7 +351,7 @@ main {
 .menu__background {
   height: 30rem;
   /* color: b90101 */
-  background-image: url(/imgs/bg.png);
+  background-image: url('../imgs/bg.png');
   background-repeat: no-repeat;
   background-position: 45% top;
   background-size: cover;
