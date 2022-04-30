@@ -15,68 +15,56 @@ var bgImage = document.querySelector('.bg-image');
 init();
 
 // Click on Button Roll
-document.querySelector('.btn--roll').addEventListener('click', function () {
-  // 1. Random number dice
-  var dice = Math.floor(Math.random() * 6) + 1;
-
-  // 2. Display the result
-  diceDOM.style.display = 'block';
-  diceDOM.src = `imgs/dice-${dice}.png`;
-
-  // 3. Check and update the score if the dice is NOT 1
-  roundScore += dice;
-  document.querySelector('#score--' + activePlayer).textContent =
-    scores[activePlayer] + roundScore;
-  btnHold.style.display = 'block';
-
-  // 4. Keep the score and change the player
-  if (dice === 1) {
-    openPopUP();
-    popUpDesc.textContent = `Player ${activePlayer + 1} gets the dice 1!`;
-    diceDOM.style.display = 'none';
-    document.querySelector('#current--' + activePlayer).textContent =
-      scores[activePlayer];
-    document.querySelector('#score--' + activePlayer).textContent =
-      scores[activePlayer];
-    nextPlayer();
-    popUpBtn.textContent = `TIME FOR PLAYER ${activePlayer + 1}`;
-    bgImage.style.backgroundImage = `url('../imgs/bg_${activePlayer}.jpg')`;
-    return;
-  }
-
-  // 5. Check the points and show the winner
-  if (document.querySelector('#score--' + activePlayer).textContent >= 100) {
-    document.getElementById('name--' + activePlayer).textContent = 'WINNER';
-    btnNew.style.display = 'block';
-    btnRoll.style.display = 'none';
-    btnHold.style.display = 'none';
-    document
-      .querySelector('.player--' + activePlayer)
-      .classList.add('player--winner');
-  }
-});
+document.querySelector('.btn--roll').addEventListener('click', rollDice);
 
 // Keep score if the player click hold button
-document.querySelector('.btn--hold').addEventListener('click', function () {
-  scores[activePlayer] += roundScore;
-  document.querySelector('#current--' + activePlayer).textContent =
-    scores[activePlayer];
-  nextPlayer();
-  bgImage.style.backgroundImage = `url('../imgs/bg_${activePlayer}.jpg')`;
-});
+document.querySelector('.btn--hold').addEventListener('click', holdScore);
 
 // Restart a new game
 btnNew.addEventListener('click', init);
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'h' && btnHold.classList.contains('show')) {
+    holdScore();
+  }
+  switch (e.key) {
+    case 'Enter':
+      if (
+        btnHold.classList.contains('show') &&
+        popup.classList.contains('hide')
+      )
+        holdScore();
+      break;
+    case ' ':
+      if (
+        btnRoll.classList.contains('show') &&
+        popup.classList.contains('hide')
+      )
+        rollDice();
+      break;
+
+    case ('Escape', 'e'):
+      if (popup.classList.contains('show')) closePopUP();
+      break;
+
+    case 'n':
+      if (btnNew.classList.contains('show')) init();
+      break;
+  }
+});
 
 // Init game
 function init() {
   scores = [0, 0];
   roundScore = 0;
   activePlayer = 0;
-  btnNew.style.display = 'none';
-  btnHold.style.display = 'none';
-  diceDOM.style.display = 'none';
-  btnRoll.style.display = 'block';
+
+  hideElement(btnHold);
+  hideElement(diceDOM);
+  hideElement(btnNew);
+
+  showElement(btnRoll);
+
   // popUpDOM.style.display = 'none';
   closePopUP();
 
@@ -96,11 +84,11 @@ function init() {
 }
 
 function nextPlayer() {
+  hideElement(btnHold);
   roundScore = 0;
   activePlayer = activePlayer === 0 ? 1 : 0;
   document.querySelector('.player--0').classList.toggle('player--active');
   document.querySelector('.player--1').classList.toggle('player--active');
-  btnHold.style.display = 'none';
 }
 
 // Click to exit the popup
@@ -108,16 +96,70 @@ function nextPlayer() {
 overlay.addEventListener('click', closePopUP);
 
 function closePopUP() {
-  popup.classList.remove('show');
-  popup.classList.add('hide');
-  overlay.classList.remove('show');
-  overlay.classList.add('hide');
+  hideElement(popup);
+  hideElement(overlay);
 }
 
 function openPopUP() {
-  popup.classList.remove('hide');
-  popup.classList.add('show');
-  overlay.classList.remove('hide');
-  overlay.classList.add('show');
+  showElement(popup);
+  showElement(overlay);
 }
 
+function rollDice() {
+  // 1. Random number dice
+  var dice = Math.floor(Math.random() * 6) + 1;
+
+  // 2. Display the result
+  showElement(diceDOM);
+  diceDOM.src = `imgs/dice-${dice}.png`;
+
+  // 3. Check and update the score if the dice is NOT 1
+  roundScore += dice;
+  document.querySelector('#score--' + activePlayer).textContent =
+    scores[activePlayer] + roundScore;
+  showElement(btnHold);
+
+  // 4. Keep the score and change the player
+  if (dice === 1) {
+    openPopUP();
+    popUpDesc.textContent = `Player ${activePlayer + 1} gets the dice 1!`;
+    hideElement(diceDOM);
+    document.querySelector('#current--' + activePlayer).textContent =
+      scores[activePlayer];
+    document.querySelector('#score--' + activePlayer).textContent =
+      scores[activePlayer];
+    nextPlayer();
+    popUpBtn.textContent = `TIME FOR PLAYER ${activePlayer + 1}`;
+    bgImage.style.backgroundImage = `url('../imgs/bg_${activePlayer}.jpg')`;
+    return;
+  }
+
+  // 5. Check the points and show the winner
+  if (document.querySelector('#score--' + activePlayer).textContent >= 10) {
+    document.getElementById('name--' + activePlayer).textContent = 'WINNER';
+    showElement(btnNew);
+    hideElement(btnRoll);
+    hideElement(btnHold);
+    document
+      .querySelector('.player--' + activePlayer)
+      .classList.add('player--winner');
+  }
+}
+
+function holdScore() {
+  scores[activePlayer] += roundScore;
+  document.querySelector('#current--' + activePlayer).textContent =
+    scores[activePlayer];
+  nextPlayer();
+  bgImage.style.backgroundImage = `url('../imgs/bg_${activePlayer}.jpg')`;
+}
+
+function showElement(ele) {
+  ele.classList.add('show');
+  ele.classList.remove('hide');
+}
+
+function hideElement(ele) {
+  ele.classList.add('hide');
+  ele.classList.remove('show');
+}

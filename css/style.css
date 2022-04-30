@@ -340,6 +340,14 @@ main {
   cursor: pointer;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 .popup.hide,
 .overlay.hide {
   opacity: 0;
@@ -357,6 +365,7 @@ main {
 }
 
 .popup.show {
+  display: flex;
   transform: translate(-50%, -50%) scale(1);
 }
 
