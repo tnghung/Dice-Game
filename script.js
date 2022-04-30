@@ -92,6 +92,7 @@ function init() {
   document.querySelector('.player--0').classList.remove('player--active');
   document.querySelector('.player--0').classList.add('player--active');
   document.querySelector('.player--1').classList.remove('player--active');
+  bgImage.style.backgroundImage = `url('../imgs/bg_0.jpg')`;
 }
 
 function nextPlayer() {
