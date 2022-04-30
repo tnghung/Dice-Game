@@ -41,7 +41,7 @@ document.querySelector('.btn--roll').addEventListener('click', function () {
       scores[activePlayer];
     nextPlayer();
     popUpBtn.textContent = `TIME FOR PLAYER ${activePlayer + 1}`;
-    bgImage.style.backgroundImage = `url(/imgs/bg_${activePlayer}.jpg)`;
+    bgImage.style.backgroundImage = `url('../imgs/bg_${activePlayer}.jpg')`;
     return;
   }
 
@@ -63,7 +63,7 @@ document.querySelector('.btn--hold').addEventListener('click', function () {
   document.querySelector('#current--' + activePlayer).textContent =
     scores[activePlayer];
   nextPlayer();
-  bgImage.style.backgroundImage = `url(../imgs/bg_${activePlayer}.jpg)`;
+  bgImage.style.backgroundImage = `url('../imgs/bg_${activePlayer}.jpg')`;
 });
 
 // Restart a new game
