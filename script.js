@@ -29,6 +29,7 @@ document.addEventListener('keydown', function (e) {
   }
   switch (e.key) {
     case 'Enter':
+    case 'h':
       if (
         btnHold.classList.contains('show') &&
         popup.classList.contains('hide')
@@ -36,6 +37,7 @@ document.addEventListener('keydown', function (e) {
         holdScore();
       break;
     case ' ':
+    case 'r':
       if (
         btnRoll.classList.contains('show') &&
         popup.classList.contains('hide')
@@ -43,7 +45,8 @@ document.addEventListener('keydown', function (e) {
         rollDice();
       break;
 
-    case ('Escape', 'e'):
+    case 'Escape':
+    case 'e':
       if (popup.classList.contains('show')) closePopUP();
       break;
 
@@ -135,7 +138,7 @@ function rollDice() {
   }
 
   // 5. Check the points and show the winner
-  if (document.querySelector('#score--' + activePlayer).textContent >= 10) {
+  if (document.querySelector('#score--' + activePlayer).textContent >= 100) {
     document.getElementById('name--' + activePlayer).textContent = 'WINNER';
     showElement(btnNew);
     hideElement(btnRoll);
