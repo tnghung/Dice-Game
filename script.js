@@ -6,7 +6,7 @@ var btnHold = document.querySelector('.btn--hold');
 var btnRoll = document.querySelector('.btn--roll');
 var diceDOM = document.querySelector('.dice');
 
-var popUpDOM = document.querySelector('.overlay');
+var overlay = document.querySelector('.overlay');
 var popup = document.querySelector('.popup');
 var popUpBtn = document.querySelector('.popup__btn');
 var popUpDesc = document.querySelector('.popup__desc');
@@ -31,8 +31,7 @@ document.querySelector('.btn--roll').addEventListener('click', function () {
 
   // 4. Keep the score and change the player
   if (dice === 1) {
-    popUpDOM.style.display = 'block';
-
+    openPopUP();
     popUpDesc.textContent = `Player ${activePlayer + 1} gets the dice 1!`;
     diceDOM.style.display = 'none';
     document.querySelector('#current--' + activePlayer).textContent =
@@ -78,7 +77,8 @@ function init() {
   btnHold.style.display = 'none';
   diceDOM.style.display = 'none';
   btnRoll.style.display = 'block';
-  popUpDOM.style.display = 'none';
+  // popUpDOM.style.display = 'none';
+  closePopUP();
 
   document.getElementById('name--0').textContent = `Player 1`;
   document.getElementById('name--1').textContent = `Player 2`;
@@ -104,8 +104,20 @@ function nextPlayer() {
 }
 
 // Click to exit the popup
-popUpBtn.addEventListener('click', function () {
+// popUpBtn.addEventListener('click', closePopUP);
+overlay.addEventListener('click', closePopUP);
+
+function closePopUP() {
   popup.classList.remove('show');
   popup.classList.add('hide');
-  popUpDOM.style.display = 'none';
-});
+  overlay.classList.remove('show');
+  overlay.classList.add('hide');
+}
+
+function openPopUP() {
+  popup.classList.remove('hide');
+  popup.classList.add('show');
+  overlay.classList.remove('hide');
+  overlay.classList.add('show');
+}
+
